@@ -15,7 +15,7 @@ export interface UserModel extends Sequelize.Model<UserModel, IUser> {
     names: string,
     phone: number,
     role: Roles,
-    password: string
+    password: string,
     address: string
 }
 
