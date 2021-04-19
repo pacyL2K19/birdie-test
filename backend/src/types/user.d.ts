@@ -4,8 +4,9 @@ export interface IBasicUser {
 
 export interface IUser extends IBasicUser {
     names: string,
-    phone?: number,
+    phone: number,
     email?: string,
+    role?: string,
     password?: string,
     address?: string
 }
