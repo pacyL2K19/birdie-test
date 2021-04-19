@@ -43,13 +43,13 @@ export class UserService {
 
     verifyToken(token: string) {
         return new Promise((resolve, _reject) => {
-            jwt.verify(token, this._jwtSecret, (err, decoded) => {
+            jwt.verify(token, this._jwtSecret, (err, _decoded) => {
                 if (err) {
                     resolve(false)
                     return
                 }
 
-                UserService._user = User.findByPk(decoded['id'])
+                // UserService._user = User.findByPk(decoded['id'])
                 resolve(true)
                 return
             })

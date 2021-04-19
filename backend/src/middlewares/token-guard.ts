@@ -24,5 +24,6 @@ export const tokenGuard: (() => RequestHandler) = (() => (req, res, next) => {
         message: 'No access granted' 
       })
     next()
+    return false
   })
 })

@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt'
-import { check } from 'express-validator/check'
+import { check } from 'express-validator'
 import { User } from '../models/user'
 
 export const userRules = {
