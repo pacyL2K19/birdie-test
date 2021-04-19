@@ -1,11 +1,19 @@
+import { IBasicCareRecipient, ICareRecipient } from "./careRecipient";
+import { IBasicUser, IUser } from "./user";
+
 export interface IBasicVisit {
+    careGiver: IBasicUser,
+    careRecipient: IBasicCareRecipient
+}
+
+export interface IVisit extends IBasicVisit {
     id: string
 }
 
-export interface Visit extends IBasicVisit {
+export interface IVisitWithDetails extends IVisit {
     date: Date,
-    careGiverId: string,
-    careRecipientId: string,
     note: string,
-    eventType: string
+    eventType: string,
+    careGiver: IUser,
+    careRecipient: ICareRecipient,
 }
