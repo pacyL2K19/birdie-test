@@ -2,10 +2,11 @@ import * as Sequelize from 'sequelize'
 import { sequelize } from '../instances/sequelize'
 import { IUser } from "../types/user";
 
-enum Roles {
+export enum Roles {
     FAMILLY_MEMBER = "familly_member",
     CARE_GIVER = "care_giver",
-    CARE_RECIPIENT = "care_recipient"
+    CARE_RECIPIENT = "care_recipient",
+    ADMIN = "admin"
 }
 
 export interface UserModel extends Sequelize.Model<UserModel, IUser> {
