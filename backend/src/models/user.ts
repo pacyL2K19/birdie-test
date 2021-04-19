@@ -1,5 +1,3 @@
-// src/models/user.ts
-
 import * as Sequelize from 'sequelize'
 import { sequelize } from '../instances/sequelize'
 import { IUser } from "../types/user";
