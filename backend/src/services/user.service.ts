@@ -9,7 +9,7 @@ export class UserService {
     constructor () {
         dotenv.config()
     }
-    private readonly _saltRounds = process.env.GEN_SALT || 10
+    private readonly _saltRounds = 10
     private readonly _jwtSecret = process.env.SECRET || '0.rfyj3n9nzh'
 
     static get userAttributes() {
@@ -21,6 +21,8 @@ export class UserService {
     }
 
     register({ email, password, names, phone, role, address }: IUser) {
+        console.log(email, password, names, phone, role, address);
+        
         return bcrypt.hash(password, this._saltRounds)
             .then(hash => {
                 const id =  () => {
