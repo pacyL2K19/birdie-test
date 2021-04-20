@@ -14,7 +14,7 @@ export interface UserModel extends Sequelize.Model<UserModel, IUser> {
     email: string,
     names: string,
     phone: number,
-    role: Roles,
+    role: string,
     password: string,
     address: string
 }
@@ -26,7 +26,10 @@ export const User = sequelize.define<UserModel, IUser>('user', {
     },
     email: Sequelize.STRING,
     password: Sequelize.STRING,
+    role: Sequelize.STRING,
     address: Sequelize.STRING,
     names: Sequelize.STRING,
     phone: Sequelize.INTEGER
+}, {
+    timestamps: false
 })

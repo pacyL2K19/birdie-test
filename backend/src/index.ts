@@ -12,12 +12,13 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
-app.use('/', userRouter)
+app.use('/api/users', userRouter)
 
 // Unprotected
 app.get('/some-resource', (_req: Request, res: Response, _next: NextFunction) => {
     res.json('Test unproteced')
 })
+// app.post('/register')
 app.use(tokenGuard())
 
 // Protected

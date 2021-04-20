@@ -6,7 +6,8 @@ create table users(
     names varchar(100) not null,
     email varchar(255),
     password varchar(255),
-    role varchar(25),
+    phone int(10),
+    role varchar(25) not null,
     address varchar(255)
 );
 

@@ -16,6 +16,7 @@ userRouter.post('/register', userRules['forRegister'], (req: Request, res: Respo
         return res.status(422).json(errors.array())
 
     const payload = matchedData(req) as IUser
+
     const user = userService.register(payload)
 
     return user.then(u => res.json(u))

@@ -5,9 +5,11 @@ import { User } from '../models/user'
 export const userRules = {
   forRegister: [
     check('email')
-      .isEmail().withMessage('Invalid email format')
+      .isEmail()
+      .withMessage('Invalid email format')
       .custom(email => User.findOne({ where: { email } }).then(u => !!!u))
-      .withMessage('Email exists'),
+      .withMessage('Email exists')
+      .optional(),
     check('password')
       .isLength({ min: 8 })
       .withMessage('Invalid password'),
@@ -16,7 +18,6 @@ export const userRules = {
       .withMessage('Passwords are different'),
     check('role')
         .isString()
-        .optional()
         .withMessage('Enter a valid role'),
     check('names')
         .isString()
@@ -25,7 +26,11 @@ export const userRules = {
         .withMessage('Enter a valid name'),
     check('address')
         .isString()
-        .optional()
+        .optional(),
+    check('phone')
+      .isNumeric()
+      .isLength({max: 10})
+      .withMessage('Enter a valid phone number')
   ],
   forLogin: [
     check('email')
