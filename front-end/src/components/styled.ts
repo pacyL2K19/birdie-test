@@ -6,6 +6,13 @@ export const Title = styled.h1`
   margin-bottom: 8px;
 `;
 
+export const PageLabel = styled.h1`
+    font-family: sans-serif;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px
+`;
+
 export const SubTitle = styled.h3`
   font-family: sans-serif;
   font-size: 18px;
