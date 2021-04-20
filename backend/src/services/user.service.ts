@@ -21,7 +21,6 @@ export class UserService {
     }
 
     register({ email, password, names, phone, role, address }: IUser) {
-        console.log(email, password, names, phone, role, address);
         
         return bcrypt.hash(password, this._saltRounds)
             .then(hash => {
@@ -39,7 +38,7 @@ export class UserService {
     login({ email }: IUser) {
         return User.findOne({ where: { email } }).then(u => {
             const { id, email } = u!
-            return { token: jwt.sign({ id, email }, this._jwtSecret) }
+            return { token: jwt.sign({ id, email }, this._jwtSecret), user: u }
         })
     }
 

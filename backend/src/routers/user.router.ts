@@ -29,7 +29,7 @@ userRouter.post('/login', userRules['forLogin'], (req: Request, res: Response) =
         return res.status(422).json(errors.array())
 
     const payload = matchedData(req) as IUser
-    const token = userService.login(payload)
+    const response = userService.login(payload)
 
-    return token.then(t => res.json(t))
+    return response.then(r => res.json(r))
 })
