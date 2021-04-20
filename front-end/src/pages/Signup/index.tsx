@@ -4,7 +4,7 @@ import Switch from '@material-ui/core/Switch';
 import Logo from '@App/components/Logo';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
-import { Box, OptionBox } from './styled';
+import { Box, OptionBox } from '../styled';
 import { PageLabel } from '../../components/styled';
 import { useState } from 'react';
 
@@ -24,19 +24,19 @@ const Signup: React.FC = (props: Props) => {
             <Box>
                 <Logo src={LogoUrl} />
                 <PageLabel>Signup</PageLabel>
-                <TextField  id="signup-names" label="Names *" fullWidth={true} margin={'normal'} />
-                <TextField  id="signup-email" label="Email *" fullWidth={true} margin={'normal'} />
-                <TextField  id="signup-password" label="Password *" fullWidth={true} margin={'normal'} />
-                <TextField  id="signup-password-confirmation" label="Pasword Confirmation *" fullWidth={true} margin={'normal'} />
-                <TextField  id="signup-phone" label="Phone *" fullWidth={true} margin={'normal'} />
-                <TextField  id="signup-address" label="Address" fullWidth={true} margin={'normal'} />
-                <p className="h4">Signup as</p>
+                <TextField id="signup-names" label="Names *" fullWidth={true} margin={'normal'} />
+                <TextField id="signup-email" label="Email *" fullWidth={true} margin={'normal'} />
+                <TextField type="password" id="signup-password" label="Password *" fullWidth={true} margin={'normal'} />
+                <TextField type="password" id="signup-password-confirmation" label="Pasword Confirmation *" fullWidth={true} margin={'normal'} />
+                <TextField id="signup-phone" label="Phone *" fullWidth={true} margin={'normal'} />
+                <TextField id="signup-address" label="Address" fullWidth={true} margin={'normal'} />
+                <p className="h5">Signup as</p>
                 <OptionBox>
                     <span>Familly Member</span>
                     <Switch
                         checked={state.isFamillyMember}
                         onChange={handleChange}
-                        name="famillyMember"
+                        name="isFamillyMember"
                         inputProps={{ 'aria-label': 'secondary checkbox' }}
                     />
                     <span>Care Giver</span>
