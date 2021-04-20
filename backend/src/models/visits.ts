@@ -27,4 +27,6 @@ export const Visit = sequelize.define<VisitModel, IVisit>('visit', {
     date: Sequelize.DATE,
     eventType: Sequelize.STRING,
     note: Sequelize.STRING
+}, {
+    timestamps: false
 })
