@@ -15,4 +15,6 @@ export const careRecipient = sequelize.define<CareRecipientModel, ICareRecipient
     },
     famillyMembers: Sequelize.TEXT,
     visits: Sequelize.TEXT
+}, {
+    timestamps: false
 })

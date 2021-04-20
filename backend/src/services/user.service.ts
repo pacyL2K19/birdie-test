@@ -21,7 +21,6 @@ export class UserService {
     }
 
     register({ email, password, names, phone, role, address }: IUser) {
-        console.log(email, password, names, phone, role, address);
         
         return bcrypt.hash(password, this._saltRounds)
             .then(hash => {
@@ -39,19 +38,20 @@ export class UserService {
     login({ email }: IUser) {
         return User.findOne({ where: { email } }).then(u => {
             const { id, email } = u!
-            return { token: jwt.sign({ id, email }, this._jwtSecret) }
+            return { token: jwt.sign({ id, email }, this._jwtSecret), user: u }
         })
     }
 
     verifyToken(token: string) {
         return new Promise((resolve, _reject) => {
-            jwt.verify(token, this._jwtSecret, (err, _decoded) => {
+            jwt.verify(token, this._jwtSecret, (err, decoded) => {
                 if (err) {
                     resolve(false)
                     return
                 }
 
-                // UserService._user = User.findByPk(decoded['id'])
+                const userFound: any = User.findByPk((<any>decoded).id)
+                UserService._user = userFound
                 resolve(true)
                 return
             })

@@ -24,7 +24,10 @@ export const User = sequelize.define<UserModel, IUser>('user', {
         type: Sequelize.STRING,
         primaryKey: true
     },
-    email: Sequelize.STRING,
+    email: {
+        type: Sequelize.STRING,
+        unique: true
+    },
     password: Sequelize.STRING,
     role: Sequelize.STRING,
     address: Sequelize.STRING,
