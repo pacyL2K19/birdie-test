@@ -5,6 +5,7 @@ import Logo from '@App/components/Logo';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
 import { Box, OptionBox } from './styled';
+import { Title } from '../../components/styled';
 import { useState } from 'react';
 
 interface Props {
@@ -21,7 +22,7 @@ const Signup: React.FC = (props: Props) => {
     return (
         <>
             <Box>
-                
+                <Title>Signup</Title>
                 <Logo src={LogoUrl} />
                 <TextField  id="signup-names" label="Names *" fullWidth={true} margin={'normal'} />
                 <TextField  id="signup-email" label="Email *" fullWidth={true} margin={'normal'} />
