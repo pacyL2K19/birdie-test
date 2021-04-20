@@ -44,13 +44,14 @@ export class UserService {
 
     verifyToken(token: string) {
         return new Promise((resolve, _reject) => {
-            jwt.verify(token, this._jwtSecret, (err, _decoded) => {
+            jwt.verify(token, this._jwtSecret, (err, decoded) => {
                 if (err) {
                     resolve(false)
                     return
                 }
 
-                // UserService._user = User.findByPk(decoded['id'])
+                const userFound: any = User.findByPk((<any>decoded).id)
+                UserService._user = userFound
                 resolve(true)
                 return
             })
