@@ -5,7 +5,7 @@ import Logo from '@App/components/Logo';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 import Button from '../../components/Button'; 
 
-import { Box, OptionBox } from './styled';
+import { Box, OptionBox } from '../styled';
 import { PageLabel } from '../../components/styled';
 import { useState } from 'react';
 
