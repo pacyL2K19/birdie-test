@@ -3,8 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import Logo from '@App/components/Logo';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
+import Button from '../../components/Button'; 
 
-import { Box, OptionBox } from '../styled';
+import { Box, OptionBox } from './styled';
 import { PageLabel } from '../../components/styled';
 import { useState } from 'react';
 
@@ -41,6 +42,7 @@ const Signup: React.FC = (props: Props) => {
                     />
                     <span>Care Giver</span>
                 </OptionBox>
+                <Button title="Signup" />
             </Box>
         </>
     );

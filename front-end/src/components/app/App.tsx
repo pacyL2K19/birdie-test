@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import Signup from '../../pages/Signup';
+import Login from '../../pages/Login';
 
 interface AppProps {
 
@@ -42,7 +42,7 @@ class App extends React.Component<AppProps, AppState> {
       <>
         <GlobalStyle />
         <AppContainer>
-          <Signup />
+          <Login />
         </AppContainer>
       </>
     );

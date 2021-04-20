@@ -1,9 +1,11 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Logo from '@App/components/Logo';
+import Button from '../../components/Button'; 
+
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
-import { Box } from '../styled';
+import { Box } from '../Signup/styled';
 import { PageLabel } from '../../components/styled';
 // import { useState } from 'react';
 
@@ -22,6 +24,7 @@ const Signup: React.FC = (props: Props) => {
                 <PageLabel>Login</PageLabel>
                 <TextField  id="login-email" label="Email *" fullWidth={true} margin={'normal'} />
                 <TextField type="password" id="login-password" label="Password *" fullWidth={true} margin={'normal'} />
+                <Button title="Login" />
             </Box>
         </>
     );
