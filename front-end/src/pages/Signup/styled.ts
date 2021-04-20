@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Box = styled.div`
     justify-content: center;
     background-color: #fff;
-    width: 30%;
+    width: 35%;
     padding: 5%;
     border-radius: 10px;
     box-shadow: 0 0 15px gray

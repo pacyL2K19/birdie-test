@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import store from '@App/store';
 import { Provider } from 'react-redux';
 import App from '@App/components/app/App';

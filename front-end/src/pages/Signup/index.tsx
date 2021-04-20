@@ -21,6 +21,7 @@ const Signup: React.FC = (props: Props) => {
     return (
         <>
             <Box>
+                
                 <Logo src={LogoUrl} />
                 <TextField  id="signup-names" label="Names *" fullWidth={true} margin={'normal'} />
                 <TextField  id="signup-email" label="Email *" fullWidth={true} margin={'normal'} />
@@ -28,7 +29,7 @@ const Signup: React.FC = (props: Props) => {
                 <TextField  id="signup-password-confirmation" label="Pasword Confirmation *" fullWidth={true} margin={'normal'} />
                 <TextField  id="signup-phone" label="Phone *" fullWidth={true} margin={'normal'} />
                 <TextField  id="signup-address" label="Address" fullWidth={true} margin={'normal'} />
-                <p>Signup as</p>
+                <p className="h4">Signup as</p>
                 <OptionBox>
                     <span>Familly Member</span>
                     <Switch
