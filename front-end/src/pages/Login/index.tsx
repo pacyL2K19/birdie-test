@@ -25,6 +25,7 @@ const Signup: React.FC = (props: Props) => {
                 <TextField  id="login-email" label="Email *" fullWidth={true} margin={'normal'} />
                 <TextField type="password" id="login-password" label="Password *" fullWidth={true} margin={'normal'} />
                 <Button title="Login" />
+                <p>Are you new in ? <a href="#">Signup</a></p>
             </Box>
         </>
     );

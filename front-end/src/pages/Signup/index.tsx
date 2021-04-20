@@ -43,6 +43,7 @@ const Signup: React.FC = (props: Props) => {
                     <span>Care Giver</span>
                 </OptionBox>
                 <Button title="Signup" />
+                <p>Already a user ? <a>Login</a></p>
             </Box>
         </>
     );

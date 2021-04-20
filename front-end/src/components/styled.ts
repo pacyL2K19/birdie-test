@@ -22,6 +22,7 @@ export const SubTitle = styled.h3`
 export const ButtonBox = styled.a`
     padding: 10px 20px;
     margin-top: 50px;
+    margin-bottom: 20px;
     border-radius: 25px;
     text-decoration: none;
     color: white;
