@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import { Grid } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
 import Header from '../../components/Header';
+import Button from '@App/components/Button';
 
 enum Roles {
     ADMIN = 'Admin',
@@ -52,42 +53,51 @@ interface Observation {
 }
 
 interface Column {
-    id: 'care_recipient' | 'date' | 'event_type' | 'observation' | 'actions';
+    id: 'visitId' | 'care_recipient' | 'date' | 'event_type' | 'observation' | 'care_giver';
     label: string;
+    value?: (v: string | CareRecipient | User) => string;
     minWidth?: number;
     align?: 'right';
-    format?: (value: number) => string;
 }
 
 const columns: Column[] = [
-    { id: 'care_recipient', label: 'Care recipient', minWidth: 170 },
-    { id: 'date', label: 'Date', minWidth: 100 },
+    {
+        id: 'visitId',
+        label: 'Visit Id',
+        value: (value: string) => value
+    },
+    {
+        id: 'care_recipient',
+        label: 'Care recipient',
+        value: (value: string) => value
+    },
+    {
+        id: 'date',
+        label: 'Date',
+        value: (value: string) => value
+    },
     {
         id: 'event_type',
         label: 'Event Type',
-        minWidth: 170,
-        format: (value: number) => value.toLocaleString('en-US'),
+        value: (value: string) => value
     },
     {
         id: 'observation',
         label: 'Observation',
-        minWidth: 170,
-        format: (value: number) => value.toLocaleString('en-US'),
+        value: (value: string) => value
     },
     {
-        id: 'actions',
-        label: 'Actions',
-        minWidth: 170,
-        format: (value: number) => value.toFixed(2),
+        id: 'care_giver',
+        label: 'Care Giver',
     },
 ];
 
-function createData(careRecipient: CareRecipient, eventType: EventType, visitId: string, date: string, observation: string, careGiver: User): Observation {
+function createData(visitId: string, careRecipient: CareRecipient, date: string, eventType: EventType, observation: string, careGiver: User): Observation {
     return {
-        careRecipient,
-        eventType,
         visitId,
+        careRecipient,
         timestamp: date,
+        eventType,
         observation,
         careGiver
     };
@@ -95,57 +105,57 @@ function createData(careRecipient: CareRecipient, eventType: EventType, visitId:
 
 const rows = [
     createData(
-        {
-            names: 'Test Name'
-        },
-        EventType.MOOD,
         'hhhd-wjjqw0-wisj',
-        '2021-2-23',
-        'Good',
-        {
-            names: 'Care giver sample',
-            email: 'test@enail.com'
-        }
-    ),
-    createData(
         {
             names: 'Test Name'
         },
-        EventType.MOOD,
-        'hhhd-wjjwqww0-wisj',
         '2021-2-23',
+        EventType.MOOD,
         'Good',
         {
             names: 'Care giver sample',
             email: 'test@enail.com'
         }
     ),
-    createData(
-        {
-            names: 'Test Name'
-        },
-        EventType.MOOD,
-        'hhhd-wjdqjw0-wisj',
-        '2021-2-23',
-        'Good',
-        {
-            names: 'Care giver sample',
-            email: 'test@enail.com'
-        }
-    ),
-    createData(
-        {
-            names: 'Test Name'
-        },
-        EventType.MOOD,
-        'hhhwd-wjjw0-wisj',
-        '2021-2-23',
-        'Good',
-        {
-            names: 'Care giver sample',
-            email: 'test@enail.com'
-        }
-    ),
+    // createData(
+    //     {
+    //         names: 'Test Name'
+    //     },
+    //     EventType.MOOD,
+    //     'hhhd-wjjwqww0-wisj',
+    //     '2021-2-23',
+    //     'Good',
+    //     {
+    //         names: 'Care giver sample',
+    //         email: 'test@enail.com'
+    //     }
+    // ),
+    // createData(
+    //     {
+    //         names: 'Test Name'
+    //     },
+    //     EventType.MOOD,
+    //     'hhhd-wjdqjw0-wisj',
+    //     '2021-2-23',
+    //     'Good',
+    //     {
+    //         names: 'Care giver sample',
+    //         email: 'test@enail.com'
+    //     }
+    // ),
+    // createData(
+    //     {
+    //         names: 'Test Name'
+    //     },
+    //     EventType.MOOD,
+    //     'hhhwd-wjjw0-wisj',
+    //     '2021-2-23',
+    //     'Good',
+    //     {
+    //         names: 'Care giver sample',
+    //         email: 'test@enail.com'
+    //     }
+    // ),
 ];
 
 const useStyles = makeStyles({
@@ -214,7 +224,7 @@ const CareGiver: React.FC = () => {
                                                     const value = row[column.id];
                                                     return (
                                                         <TableCell key={column.id} align={column.align}>
-                                                            {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                            {column.value ? column.value(value) : value}
                                                         </TableCell>
                                                     );
                                                 })}
@@ -246,6 +256,7 @@ const CareGiver: React.FC = () => {
                     <TextField id="date" label="Date *" fullWidth={true} margin={'normal'} />
                     <TextField id="note" label="Note *" multiline={true} fullWidth={true} margin={'normal'} />
                 </Grid>
+                <Button title="Save" />
             </Grid>
         </>
     );
