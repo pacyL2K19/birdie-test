@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import Login from '../../pages/Login';
+import CareGiver from '../../pages/CareGiver';
 
 interface AppProps {
 
@@ -14,22 +14,22 @@ interface AppState {
 }
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  /* body {
     height: 100vh;
     background-color: #F9F9F9;
     > div {
       height: 100%;
     }
-  }
+  } */
 `;
 
 const AppContainer = styled.div`
-  width: 100%;
+  /* width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 `;
 
 class App extends React.Component<AppProps, AppState> {
@@ -42,7 +42,7 @@ class App extends React.Component<AppProps, AppState> {
       <>
         <GlobalStyle />
         <AppContainer>
-          <Login />
+          <CareGiver />
         </AppContainer>
       </>
     );
