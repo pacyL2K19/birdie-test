@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
@@ -8,9 +9,9 @@ import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import HotelIcon from '@material-ui/icons/Hotel';
-import RepeatIcon from '@material-ui/icons/Repeat';
+// import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+// import HotelIcon from '@material-ui/icons/Hotel';
+// import RepeatIcon from '@material-ui/icons/Repeat';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Header from '../../components/Header';
@@ -72,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FamillyMember: React.FC = () => {
     const classes = useStyles();
+    // const [data, setData] = useState([]);
     return (
         <>
             <Header
@@ -101,7 +103,7 @@ const FamillyMember: React.FC = () => {
                         </Paper>
                     </TimelineContent>
                 </TimelineItem>
-                <TimelineItem>
+                {/* <TimelineItem>
                     <TimelineOppositeContent>
                         <Typography variant="body2" color="textSecondary">
                             10:00 am
@@ -152,7 +154,7 @@ const FamillyMember: React.FC = () => {
                             <Typography>Because this is the life you love!</Typography>
                         </Paper>
                     </TimelineContent>
-                </TimelineItem>
+                </TimelineItem> */}
             </Timeline>
         </>
     );
