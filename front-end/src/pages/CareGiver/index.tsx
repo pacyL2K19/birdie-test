@@ -38,7 +38,7 @@ interface User {
 interface CareRecipient {
     names: string;
     famillyMembers?: [User];
-    observations?: [Observation]
+    observations?: [Observation];
 }
 
 interface Observation {
@@ -50,7 +50,6 @@ interface Observation {
     careRecipient: CareRecipient;
     observation: string;
 }
-
 
 interface Column {
     id: 'care_recipient' | 'date' | 'event_type' | 'observation' | 'actions';
@@ -100,12 +99,12 @@ const rows = [
             names: 'Test Name'
         },
         EventType.MOOD,
-        "hhhd-wjjqw0-wisj",
-        "2021-2-23",
-        "Good",
+        'hhhd-wjjqw0-wisj',
+        '2021-2-23',
+        'Good',
         {
-            names: "Care giver sample",
-            email: "test@enail.com"
+            names: 'Care giver sample',
+            email: 'test@enail.com'
         }
     ),
     createData(
@@ -113,12 +112,12 @@ const rows = [
             names: 'Test Name'
         },
         EventType.MOOD,
-        "hhhd-wjjwqww0-wisj",
-        "2021-2-23",
-        "Good",
+        'hhhd-wjjwqww0-wisj',
+        '2021-2-23',
+        'Good',
         {
-            names: "Care giver sample",
-            email: "test@enail.com"
+            names: 'Care giver sample',
+            email: 'test@enail.com'
         }
     ),
     createData(
@@ -126,12 +125,12 @@ const rows = [
             names: 'Test Name'
         },
         EventType.MOOD,
-        "hhhd-wjdqjw0-wisj",
-        "2021-2-23",
-        "Good",
+        'hhhd-wjdqjw0-wisj',
+        '2021-2-23',
+        'Good',
         {
-            names: "Care giver sample",
-            email: "test@enail.com"
+            names: 'Care giver sample',
+            email: 'test@enail.com'
         }
     ),
     createData(
@@ -139,12 +138,12 @@ const rows = [
             names: 'Test Name'
         },
         EventType.MOOD,
-        "hhhwd-wjjw0-wisj",
-        "2021-2-23",
-        "Good",
+        'hhhwd-wjjw0-wisj',
+        '2021-2-23',
+        'Good',
         {
-            names: "Care giver sample",
-            email: "test@enail.com"
+            names: 'Care giver sample',
+            email: 'test@enail.com'
         }
     ),
 ];
@@ -178,7 +177,7 @@ const CareGiver: React.FC = () => {
                 email="test@email.com"
                 role={Roles.CARE_GIVER}
             />
-            <Grid 
+            <Grid
                 container={true}
                 className="px-5 py-5"
             >
@@ -242,10 +241,10 @@ const CareGiver: React.FC = () => {
                     lg={5}
                 >
                     <p className="h3 mb-5">New observation</p>
-                    <TextField  id="care-recipient" label="Care recipient *" fullWidth={true} margin={'normal'} />
-                    <TextField  id="care-recipient" label="Event Type *" fullWidth={true} margin={'normal'} />
-                    <TextField  id="date" label="Date *" fullWidth={true} margin={'normal'} />
-                    <TextField  id="note" label="Note *" multiline={true} fullWidth={true} margin={'normal'} />
+                    <TextField id="care-recipient" label="Care recipient *" fullWidth={true} margin={'normal'} />
+                    <TextField id="care-recipient" label="Event Type *" fullWidth={true} margin={'normal'} />
+                    <TextField id="date" label="Date *" fullWidth={true} margin={'normal'} />
+                    <TextField id="note" label="Note *" multiline={true} fullWidth={true} margin={'normal'} />
                 </Grid>
             </Grid>
         </>
