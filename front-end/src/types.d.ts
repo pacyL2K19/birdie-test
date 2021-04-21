@@ -1,9 +1,14 @@
 export enum Roles {
-    ADMIN = "admin",
-    CARE_GIVER = "care_giver",
-    CARE_RECIPIENT = "care_recipient"
+    ADMIN = "Admin",
+    CARE_GIVER = "Care Giver",
+    CARE_RECIPIENT = "Care Recipient"
 }
 
+export enum EventType {
+    MOOD = "Mood Observation",
+    HEALTH = "Health Check",
+    SLEEP = "Sleep"
+}
 interface IUser {
     id?: string,
     names: string,
@@ -24,7 +29,7 @@ interface ICareRecipient {
 
 interface IObservation {
     id: string,
-    event_type: string,
+    event_type: EventType,
     visit_id: string,
     timestamp: string,
     caregiver_id: string,
