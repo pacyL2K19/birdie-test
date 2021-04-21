@@ -38,3 +38,17 @@ export const ButtonBox = styled.a`
         color: #fff
     }
 `;
+export const HeaderBox = styled.div`
+    background-color: #bffbff;
+    padding: 40px;
+`;
+
+export const Left = styled.div`
+    display: flex;
+    flex: 1
+`;
+
+export const Right = styled.div`
+    display: flex;
+    flex: 1
+`;
