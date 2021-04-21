@@ -117,45 +117,6 @@ const rows = [
             email: 'test@enail.com'
         }
     ),
-    // createData(
-    //     {
-    //         names: 'Test Name'
-    //     },
-    //     EventType.MOOD,
-    //     'hhhd-wjjwqww0-wisj',
-    //     '2021-2-23',
-    //     'Good',
-    //     {
-    //         names: 'Care giver sample',
-    //         email: 'test@enail.com'
-    //     }
-    // ),
-    // createData(
-    //     {
-    //         names: 'Test Name'
-    //     },
-    //     EventType.MOOD,
-    //     'hhhd-wjdqjw0-wisj',
-    //     '2021-2-23',
-    //     'Good',
-    //     {
-    //         names: 'Care giver sample',
-    //         email: 'test@enail.com'
-    //     }
-    // ),
-    // createData(
-    //     {
-    //         names: 'Test Name'
-    //     },
-    //     EventType.MOOD,
-    //     'hhhwd-wjjw0-wisj',
-    //     '2021-2-23',
-    //     'Good',
-    //     {
-    //         names: 'Care giver sample',
-    //         email: 'test@enail.com'
-    //     }
-    // ),
 ];
 
 const useStyles = makeStyles({

@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import CareGiver from '../../pages/CareGiver';
+import FamillyMember from '../../pages/FamillyMember';
 
 interface AppProps {
 
@@ -42,7 +42,7 @@ class App extends React.Component<AppProps, AppState> {
       <>
         <GlobalStyle />
         <AppContainer>
-          <CareGiver />
+          <FamillyMember />
         </AppContainer>
       </>
     );

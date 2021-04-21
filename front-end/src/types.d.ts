@@ -1,7 +1,8 @@
 export enum Roles {
-    ADMIN = "Admin",
-    CARE_GIVER = "Care Giver",
-    CARE_RECIPIENT = "Care Recipient"
+    ADMIN = 'Admin',
+    CARE_GIVER = 'Care Giver',
+    FAMILLY_MEMBER = 'Familly Member',
+    CARE_RECIPIENT = 'Care Recipient'
 }
 
 export enum EventType {
