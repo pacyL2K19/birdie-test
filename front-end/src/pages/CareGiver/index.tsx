@@ -255,8 +255,11 @@ const CareGiver: React.FC = () => {
                     <TextField id="care-recipient" label="Event Type *" fullWidth={true} margin={'normal'} />
                     <TextField id="date" label="Date *" fullWidth={true} margin={'normal'} />
                     <TextField id="note" label="Note *" multiline={true} fullWidth={true} margin={'normal'} />
+                    <div className="d-flex fle-row justify-content-around">
+                        <Button title="Save" />
+                        <Button title="Cancel" />
+                    </div>
                 </Grid>
-                <Button title="Save" />
             </Grid>
         </>
     );
