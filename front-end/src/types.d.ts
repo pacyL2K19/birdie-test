@@ -9,7 +9,7 @@ export enum EventType {
     HEALTH = "Health Check",
     SLEEP = "Sleep"
 }
-interface IUser {
+export interface IUser {
     id?: string,
     names: string,
     email: string,
@@ -21,18 +21,18 @@ interface IUser {
     role?: Roles
 }
 
-interface ICareRecipient {
+export interface ICareRecipient {
     names: string,
-    famillyMembers: [IUser],
-    observations: [IObservation]
+    famillyMembers?: [IUser],
+    observations?: [IObservation]
 }
 
-interface IObservation {
-    id: string,
-    event_type: EventType,
-    visit_id: string,
+export interface IObservation {
+    id?: string,
+    eventType: EventType,
+    visitId: string,
     timestamp: string,
-    caregiver_id: string,
-    care_recipient_id: string,
-    mood: string,
+    careGiver: IUser,
+    careRecipient: ICareRecipient,
+    observation: string,
 }
