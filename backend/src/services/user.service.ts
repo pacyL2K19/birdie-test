@@ -4,42 +4,34 @@ import * as Bluebird from 'bluebird'
 import * as dotenv from 'dotenv'
 import { User } from '../models/user'
 import { IUser } from '../types/user'
+import { id } from '../common/createId'
 
 export class UserService {
-    constructor () {
+    constructor() {
         dotenv.config()
     }
     private readonly _saltRounds = 10
     private readonly _jwtSecret = process.env.SECRET || '0.rfyj3n9nzh'
 
     static get userAttributes() {
-        return ['id', 'email']
+        return ['id', 'email', 'names', 'role']
     }
     private static _user: IUser
     static get user() {
         return UserService._user
     }
 
-    register({ email, password, names, phone, role, address }: IUser) {
-        
-        return bcrypt.hash(password, this._saltRounds)
-            .then(hash => {
-                const id =  () => {
-                    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                      return v.toString(16);
-                    });
-                }
-                return User.create({ email, password: hash, names, phone, role, address, id: id() })
-                    .then(u => this.getUserById(u!.id))
-            })
+    async register({ email, password, names, phone, role, address }: IUser) {
+
+        const hash = await bcrypt.hash(password, this._saltRounds)
+        const u = await User.create({ email, password: hash, names, phone, role, address, id: id() })
+        return await this.getUserById(u!.id)
     }
 
-    login({ email }: IUser) {
-        return User.findOne({ where: { email } }).then(u => {
-            const { id, email } = u!
-            return { token: jwt.sign({ id, email }, this._jwtSecret), user: u }
-        })
+    async login({ email }: IUser) {
+        const u = await User.findOne({ where: { email } })
+        const { id } = u!
+        return { token: jwt.sign({ id, email }, this._jwtSecret), user: u }
     }
 
     verifyToken(token: string) {

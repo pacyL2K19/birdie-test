@@ -4,17 +4,19 @@ import { ICareRecipient } from '../types/careRecipient';
 
 export interface CareRecipientModel extends Sequelize.Model<CareRecipientModel, ICareRecipient> {
     id: string,
-    famillyMembers: string,
-    visits: string
+    familly_members: string,
+    visits: string,
+    names: string
 }
 
-export const careRecipient = sequelize.define<CareRecipientModel, ICareRecipient>('careRecipient', {
+export const care_recipients = sequelize.define<CareRecipientModel, ICareRecipient>('care_recipients', {
     id: {
         type: Sequelize.STRING,
         primaryKey: true
     },
-    famillyMembers: Sequelize.TEXT,
-    visits: Sequelize.TEXT
+    familly_members: Sequelize.TEXT,
+    visits: Sequelize.TEXT,
+    names: Sequelize.TEXT
 }, {
     timestamps: false
 })
