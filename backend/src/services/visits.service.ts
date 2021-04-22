@@ -1,5 +1,4 @@
 // import * as bcrypt from 'bcrypt'
-// import * as jwt from 'jsonwebtoken'
 import * as Bluebird from 'bluebird'
 import * as dotenv from 'dotenv'
 import { Visit } from '../models/visits'
