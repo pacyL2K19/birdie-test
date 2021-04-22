@@ -16,13 +16,13 @@ export class VisitService {
         return await this.showVisit(v_1!.id)
     }
 
+    async index() {
+        await Visit.findAll({attributes: VisitService.visitAttributes})
+    }
+
     showVisit(id: string) {
         return Visit.findByPk(id, {
             attributes: VisitService.visitAttributes
         }) as Bluebird<IVisit>
-    }
-
-    getAllVisits() {
-
     }
 }

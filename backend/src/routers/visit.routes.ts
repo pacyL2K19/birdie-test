@@ -1,6 +1,5 @@
-import { Router } from 'express'
+import { Request, Response, Router } from 'express'
 import { matchedData } from 'express-validator/filter'
-import {Request, Response} from 'express'
 import { validationResult } from 'express-validator/check'
 import { visitRules } from '../rules/visits.rules'
 import { VisitService } from '../services/visits.service'
@@ -28,4 +27,12 @@ visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCre
     })
 
     return visit.then(v => res.json(v))
+})
+
+visitRouter.get('/', tokenGuard(), (_req: Request, res: Response) => {
+    return visitService.index().then(v => {
+        console.log(v);
+        
+        res.json(v)
+    })
 })

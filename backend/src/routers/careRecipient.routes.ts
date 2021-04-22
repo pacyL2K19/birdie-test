@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { matchedData } from 'express-validator/filter'
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import { validationResult } from 'express-validator/check'
 import { careRecipientRules } from '../rules/careRecipient.rules'
 import { CareRecipientService } from '../services/careRecipient.service'
