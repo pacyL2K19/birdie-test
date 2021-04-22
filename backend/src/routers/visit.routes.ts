@@ -4,7 +4,8 @@ import { validationResult } from 'express-validator/check'
 import { visitRules } from '../rules/visits.rules'
 import { VisitService } from '../services/visits.service'
 import { IVisit } from '../types/visit'
-import { tokenGuard } from '../middlewares/token-guard';
+import { tokenGuard } from '../middlewares/token-guard'
+import { codeStatus } from '../contants/codeStatus'
 
 export const visitRouter = Router()
 const visitService = new VisitService()
@@ -26,13 +27,11 @@ visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCre
         ...params
     })
 
-    return visit.then(v => res.json(v))
+    return visit.then(v => res.status(201).json(v))
 })
 
 visitRouter.get('/', tokenGuard(), (_req: Request, res: Response) => {
     return visitService.index().then(v => {
-        console.log(v);
-        
-        res.json(v)
+        res.status(codeStatus.SUCCESS).json(v)
     })
 })

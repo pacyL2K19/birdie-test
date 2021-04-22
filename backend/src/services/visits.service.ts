@@ -16,8 +16,8 @@ export class VisitService {
         return await this.showVisit(v_1!.id)
     }
 
-    async index() {
-        await Visit.findAll({attributes: VisitService.visitAttributes})
+    index() {
+        return Visit.findAll({attributes: VisitService.visitAttributes})
     }
 
     showVisit(id: string) {
