@@ -5,11 +5,12 @@ import { validationResult } from 'express-validator/check'
 import { visitRules } from '../rules/visits.rules'
 import { VisitService } from '../services/visits.service'
 import { IVisit } from '../types/visit'
+import { tokenGuard } from '../middlewares/token-guard';
 
 export const visitRouter = Router()
 const visitService = new VisitService()
 
-visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCreation'], (req: Request, res: Response) => {
+visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCreation'], tokenGuard(), (req: Request, res: Response) => {
     const errors = validationResult(req)
     
     if (!errors.isEmpty())
