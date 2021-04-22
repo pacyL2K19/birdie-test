@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser'
 import { Request, Response, NextFunction } from 'express'
 import { userRouter } from './routers/user.router'
 import { tokenGuard } from './middlewares/token-guard'
+import { visitRouter } from './routers/visit.routes';
 dotenv.config();
 
 const port = process.env.PORT || 8000;
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use('/api/users', userRouter)
+app.use('/visits', visitRouter)
 
 // Unprotected
 app.get('/some-resource', (_req: Request, res: Response, _next: NextFunction) => {
