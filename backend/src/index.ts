@@ -6,6 +6,7 @@ import { Request, Response, NextFunction } from 'express'
 import { userRouter } from './routers/user.router'
 import { tokenGuard } from './middlewares/token-guard'
 import { visitRouter } from './routers/visit.routes';
+import { careRecipientRouter } from './routers/careRecipient.routes';
 dotenv.config();
 
 const port = process.env.PORT || 8000;
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use('/api/users', userRouter)
 app.use('/api/visits', visitRouter)
+app.use('/api/care-recipients', careRecipientRouter)
 
 // Unprotected
 app.get('/some-resource', (_req: Request, res: Response, _next: NextFunction) => {

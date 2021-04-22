@@ -21,10 +21,10 @@ careRecipientRouter.post('/register/:first_familly_member', careRecipientRules['
         familly_members: req.params.first_familly_member
     }
 
-    const visit = careRecipientService.register({
+    const careRecipient = careRecipientService.register({
         ...payload,
         ...params
     })
 
-    return visit.then(v => res.json(v))
+    return careRecipient.then(cr => res.json(cr))
 })

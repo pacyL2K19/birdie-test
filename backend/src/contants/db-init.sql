@@ -1,5 +1,5 @@
-create database birdie-dev;
-use birdie-dev;
+create database birdie_dev;
+use birdie_dev;
 
 create table users(
     id varchar(36) primary key,
@@ -23,5 +23,6 @@ create table visits(
 create table care_recipient(
     id varchar(36),
     familly_members text,
-    visits text
+    visits text,
+    names varchar(255)
 )

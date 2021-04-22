@@ -9,7 +9,7 @@ export interface CareRecipientModel extends Sequelize.Model<CareRecipientModel, 
     names: string
 }
 
-export const careRecipient = sequelize.define<CareRecipientModel, ICareRecipient>('careRecipient', {
+export const care_recipients = sequelize.define<CareRecipientModel, ICareRecipient>('care_recipients', {
     id: {
         type: Sequelize.STRING,
         primaryKey: true
