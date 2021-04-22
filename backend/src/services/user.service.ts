@@ -4,6 +4,7 @@ import * as Bluebird from 'bluebird'
 import * as dotenv from 'dotenv'
 import { User } from '../models/user'
 import { IUser } from '../types/user'
+import { id } from '../common/createId'
 
 export class UserService {
     constructor() {
@@ -23,12 +24,6 @@ export class UserService {
     async register({ email, password, names, phone, role, address }: IUser) {
 
         const hash = await bcrypt.hash(password, this._saltRounds)
-        const id = () => {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 3 | 8)
-                return v.toString(16)
-            })
-        }
         const u = await User.create({ email, password: hash, names, phone, role, address, id: id() })
         return await this.getUserById(u!.id)
     }
