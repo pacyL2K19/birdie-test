@@ -8,9 +8,9 @@ export class CareRecipientService {
         return ['id', 'familly_members', 'visits']
     }
 
-    register({familly_members, visits}: ICareRecipient) {
-        return careRecipient.create({familly_members, visits, id: id()})
-            .then(cr => this.getCareRecipientByPk(cr!.id))
+    async register({familly_members, visits}: ICareRecipient) {
+        const cr = await careRecipient.create({ familly_members, visits, id: id() })
+        return await this.getCareRecipientByPk(cr!.id)
     }
 
     getCareRecipientByPk(id: string) {
