@@ -22,10 +22,10 @@ export const Visit = sequelize.define<VisitModel, IVisit>('visit', {
         type: Sequelize.STRING,
         primaryKey: true,
     },
-    careGiverId: Sequelize.STRING,
-    careRecipientId: Sequelize.STRING,
-    date: Sequelize.DATE,
-    eventType: Sequelize.STRING,
+    care_giver_id: Sequelize.STRING,
+    care_recipient_id: Sequelize.STRING,
+    date: Sequelize.STRING,
+    event_type: Sequelize.STRING,
     note: Sequelize.STRING
 }, {
     timestamps: false

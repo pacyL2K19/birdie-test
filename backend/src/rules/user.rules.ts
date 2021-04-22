@@ -17,19 +17,19 @@ export const userRules = {
       .custom((confirmPassword, { req }) => req.body.password === confirmPassword)
       .withMessage('Passwords are different'),
     check('role')
-        .isString()
-        .withMessage('Enter a valid role'),
+      .isString()
+      .withMessage('Enter a valid role'),
     check('names')
-        .isString()
-        .optional()
-        .isLength({ min: 3, max: 100})
-        .withMessage('Enter a valid name'),
+      .isString()
+      .optional()
+      .isLength({ min: 3, max: 100 })
+      .withMessage('Enter a valid name'),
     check('address')
-        .isString()
-        .optional(),
+      .isString()
+      .optional(),
     check('phone')
       .isNumeric()
-      .isLength({max: 10})
+      .isLength({ max: 10 })
       .withMessage('Enter a valid phone number')
   ],
   forLogin: [
@@ -39,7 +39,7 @@ export const userRules = {
       .custom(email => User.findOne({ where: { email } }).then(u => !!u)).withMessage('Invalid email or password'),
     check('password')
       .custom((password, { req }) => {
-        return User.findOne({ where: { email: req.body.email }})
+        return User.findOne({ where: { email: req.body.email } })
           .then(u => bcrypt.compare(password, u!.password))
       })
       .withMessage('Invalid email or password')
