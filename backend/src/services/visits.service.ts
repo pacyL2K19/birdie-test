@@ -9,16 +9,16 @@ export class VisitService {
         dotenv.config()
     }
     static get visitAttributes() {
-        return ['id', 'visit_id', 'care_giver_id', 'care_recipient_id', 'event_type']
+        return ['id', 'care_giver_id', 'care_recipient_id', 'event_type']
     }
-    createVisit({careGiverId, careRecipientId, date, eventType, note}: IVisit) {
+    createVisit({care_giver_id, care_recipient_id, date, event_type, note}: IVisit) {
         const id =  () => {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
               var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
               return v.toString(16);
             });
         }
-        return Visit.create({careGiverId, careRecipientId, date, eventType, note, id: id() })
+        return Visit.create({care_giver_id, care_recipient_id, date, event_type, note, id: id() })
             .then(v => this.showVisit(v!.id))
     }
 

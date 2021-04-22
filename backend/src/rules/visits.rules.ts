@@ -6,7 +6,7 @@ export const visitRules = {
       .isString()
       .isLength({min: 6})
       .withMessage('Please enter a correct date'),
-    check('eventType')
+    check('event_type')
       .isString()
       .isLength({ min: 3 })
       .withMessage('Invalid event type'),
