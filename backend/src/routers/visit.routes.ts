@@ -11,7 +11,6 @@ const visitService = new VisitService()
 
 visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCreation'], (req: Request, res: Response) => {
     const errors = validationResult(req)
-    console.log(req.params.care_giver_id, req.params.care_recipient_id);
     
     if (!errors.isEmpty())
         return res.status(422).json(errors.array())
@@ -26,8 +25,6 @@ visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCre
         ...payload,
         ...params
     })
-
-    console.log(visit);
 
     return visit.then(v => res.json(v))
 })
