@@ -1,5 +1,5 @@
 import * as Bluebird from 'bluebird'
-import { careRecipient } from '../models/careRecipient'
+import { careRecipient } from '../models/careRecipient,'
 import { ICareRecipient } from '../types/careRecipient'
 import { id } from '../common/createId'
 
@@ -8,7 +8,7 @@ export class CareRecipientService {
         return ['id', 'familly_members', 'visits']
     }
 
-    async register({familly_members, visits}: ICareRecipient) {
+    async register({ familly_members, visits }: ICareRecipient) {
         const cr = await careRecipient.create({ familly_members, visits, id: id() })
         return await this.getCareRecipientByPk(cr!.id)
     }

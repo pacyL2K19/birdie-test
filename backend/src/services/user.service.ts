@@ -6,7 +6,7 @@ import { User } from '../models/user'
 import { IUser } from '../types/user'
 
 export class UserService {
-    constructor () {
+    constructor() {
         dotenv.config()
     }
     private readonly _saltRounds = 10
@@ -21,7 +21,7 @@ export class UserService {
     }
 
     async register({ email, password, names, phone, role, address }: IUser) {
-        
+
         const hash = await bcrypt.hash(password, this._saltRounds)
         const id = () => {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
