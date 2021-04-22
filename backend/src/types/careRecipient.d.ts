@@ -1,8 +1,8 @@
 export interface IBasicCareRecipient {
-    id: string
+    id?: string
 }
 
 export interface ICareRecipient extends IBasicCareRecipient {
-    famillyMembers: string,
-    visits: string
+    familly_members?: string,
+    visits?: string
 }
