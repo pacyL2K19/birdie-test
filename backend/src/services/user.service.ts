@@ -14,7 +14,7 @@ export class UserService {
     private readonly _jwtSecret = process.env.SECRET || '0.rfyj3n9nzh'
 
     static get userAttributes() {
-        return ['id', 'email']
+        return ['id', 'email', 'names', 'role']
     }
     private static _user: IUser
     static get user() {

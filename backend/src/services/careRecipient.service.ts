@@ -1,5 +1,5 @@
 import * as Bluebird from 'bluebird'
-import { careRecipient } from '../models/careRecipient,'
+import { careRecipient } from '../models/careRecipient'
 import { ICareRecipient } from '../types/careRecipient'
 import { id } from '../common/createId'
 
