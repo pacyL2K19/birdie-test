@@ -6,6 +6,7 @@ import { careRecipientRules } from '../rules/careRecipient.rules'
 import { CareRecipientService } from '../services/careRecipient.service'
 import { ICareRecipient } from '../types/careRecipient'
 import { tokenGuard } from '../middlewares/token-guard';
+import { codeStatus } from '../contants/codeStatus'
 
 export const careRecipientRouter = Router()
 const careRecipientService = new CareRecipientService()
@@ -26,5 +27,5 @@ careRecipientRouter.post('/register/:first_familly_member', careRecipientRules['
         ...params
     })
 
-    return careRecipient.then(cr => res.json(cr))
+    return careRecipient.then(cr => res.status(codeStatus.CREATED).json(cr))
 })

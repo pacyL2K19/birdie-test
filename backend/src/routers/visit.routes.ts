@@ -14,7 +14,7 @@ visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCre
     const errors = validationResult(req)
     
     if (!errors.isEmpty())
-        return res.status(422).json(errors.array())
+        return res.status(codeStatus.BAD_REQUEST).json(errors.array())
 
     const payload = matchedData(req) as IVisit
     const params = {
@@ -27,7 +27,7 @@ visitRouter.post('/create/:care_giver_id/:care_recipient_id', visitRules['forCre
         ...params
     })
 
-    return visit.then(v => res.status(201).json(v))
+    return visit.then(v => res.status(codeStatus.CREATED).json(v))
 })
 
 visitRouter.get('/', tokenGuard(), (_req: Request, res: Response) => {
