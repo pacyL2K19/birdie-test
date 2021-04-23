@@ -20,7 +20,10 @@ userRouter.post('/register', userRules['forRegister'], (req: Request, res: Respo
 
     const user = userService.register(payload)
 
-    return user.then(u => res.status(codeStatus.CREATED).json(u))
+    return user.then(u => res.status(codeStatus.CREATED).json({
+        u,
+        sucess: true
+    }))
 })
 
 userRouter.post('/login', userRules['forLogin'], (req: Request, res: Response) => {
