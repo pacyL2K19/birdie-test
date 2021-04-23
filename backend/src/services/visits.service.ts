@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 import { Visit } from '../models/visits'
 import { IVisit } from '../types/visit'
 import { id } from '../common/createId'
+// import * as Sequelize from 'sequelize';
 
 export class VisitService {
     constructor() {
@@ -30,4 +31,12 @@ export class VisitService {
             attributes: VisitService.visitAttributes
         }) as Bluebird<IVisit>
     }
+
+    // showVisitPerFamillyMember(careRecipientId: string) {
+    //     return Visit.findAll({
+    //         where: {
+    //             care_recipient_id: careRecipientId
+    //         }
+    //     })
+    // }
 }
