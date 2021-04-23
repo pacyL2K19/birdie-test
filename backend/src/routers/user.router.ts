@@ -5,6 +5,7 @@ import { validationResult } from 'express-validator/check'
 import { userRules } from '../rules/user.rules'
 import { UserService } from '../services/user.service'
 import { IUser } from '../types/user'
+import { codeStatus } from '../contants/codeStatus'
 
 export const userRouter = Router()
 const userService = new UserService()
@@ -13,23 +14,23 @@ userRouter.post('/register', userRules['forRegister'], (req: Request, res: Respo
     const errors = validationResult(req)
 
     if (!errors.isEmpty())
-        return res.status(422).json(errors.array())
+        return res.status(codeStatus.BAD_REQUEST).json(errors.array())
 
     const payload = matchedData(req) as IUser
 
     const user = userService.register(payload)
 
-    return user.then(u => res.json(u))
+    return user.then(u => res.status(codeStatus.CREATED).json(u))
 })
 
 userRouter.post('/login', userRules['forLogin'], (req: Request, res: Response) => {
     const errors = validationResult(req)
 
     if (!errors.isEmpty())
-        return res.status(422).json(errors.array())
+        return res.status(codeStatus.BAD_REQUEST).json(errors.array())
 
     const payload = matchedData(req) as IUser
     const response = userService.login(payload)
 
-    return response.then(r => res.json(r))
+    return response.then(r => res.status(codeStatus.SUCCESS).json(r))
 })
