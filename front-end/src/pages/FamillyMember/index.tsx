@@ -91,9 +91,30 @@ const FamillyMember: React.FC = () => {
                     <TimelineContent>
                         <Paper elevation={3} className={classes.paper}>
                             <Typography variant="h6" component="h1">
-                                Eat
+                                Mood observation
                             </Typography>
-                            <Typography>Because you need strength</Typography>
+                            <Typography>Good mood from now</Typography>
+                        </Paper>
+                    </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                    <TimelineOppositeContent>
+                        <Typography variant="body2" color="textSecondary">
+                            03-12-2020 12:30 am
+                        </Typography>
+                    </TimelineOppositeContent>
+                    <TimelineSeparator>
+                        <TimelineDot>
+                            <FastfoodIcon />
+                        </TimelineDot>
+                        <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        <Paper elevation={3} className={classes.paper}>
+                            <Typography variant="h6" component="h1">
+                                Sleep checking
+                            </Typography>
+                            <Typography>Everything normal</Typography>
                         </Paper>
                     </TimelineContent>
                 </TimelineItem>
