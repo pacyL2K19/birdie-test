@@ -1,15 +1,11 @@
 # Birdie Developer Test
-We would like to thank you for taking our developer test. We understand that often candidates will have many of these tests to complete. Therefore we think it's important to cut straight to the important stuff. With that in mind, we've gone ahead and created a boilerplate that mostly represents the kind of technical stack we work with. This saves you from having to create needless boilerplate code that does little to demonstrate your potential as a developer.
 
-## Context
+> A fullstack assessment `Birdie Test` using React - Typescript - Redux - Saga - Styled-Component on the frontend, NodeJs - Typescript - Jest - Express - Sequelize on the backend
+> The aim of this app is to display informations about observations `care giver` recorded about a `care recipient` with a timeline display on the frontent
 
-At Birdie, our app allows care givers to record observations of older adults receiving care, we name them **care recipients**.
+## Understantanding of the challenge
 
-These could be anything from the recording of their mood (happy, sad, bored, confused) to what they drank today (1 pint of water).
-
-Each of these observations are recorded as events in our database. Here's an example of a mood observation recorded
-in this event format:
-
+Needing to display information in the format bellow
 ``` json
 {  
    "id":"decaa026-2ce5-49cb-aff9-92326b85a98c",
@@ -21,57 +17,64 @@ in this event format:
    "mood":"okay",
 },
 ```
+I decided to organize data content this way: 
 
-Here's a quick explanation of the base properties:
+1. **User**: The user can either be a familly member or a care giver with these informations: 
+   ``` json
+   {
+      "names": "FakeUserNameTest",
+      "role": "care_giver",
+      "phone": 900000001,
+      "email": "test@faketest.com",
+      "password": "test1234",
+      "confirmPassword": "test1234",
+      "address": "test address"
+   }
+   ```
+The role can be : `care_giver` or `familly_member`
+Depending on the role, a user can have his UI 
+> - For the care giver: His UI must allow him to register a new care recipient, record a new observation and display a list of all the precvious observations taken
+> - For the Familly member, his UI will help hi to see in a timeline UI the recorded observation ordered by date from the most recent one to the oldest one
+2. **Care recipient**: When a new care recipient is admited, we need to assign to him at least one created user to become his first familly member, the familly member has these informations: 
+``` json
+{
+   "names": "Test user",
+   "familly_members": "xxxxxxx-xxx-xxx-xxx, wwuwuuw-www-kk, kkwkw",
+   "visits": "xxxxxx-xxxx, xxxxxx-xxxx, xxxx-xx-xxx-x"
+}
+```
+A care recipient can have one or multiple familly member recorder in a text field with `ID` joined by `, ` and his visits id stored the same way
+3. **Visit**: The visit table in the database represents the observations recorded by a certain `care_giver` for a certain `care_recipient` the sumarry of it will be shown as observation to a familly member
+For a new visit, this is an example of data to record: 
+``` json
+{
+    "note": "Everything fine for now",
+    "date": "2021-04-05",
+    "event_type": "mood_observation"
+}
+```
+The event type is set in an enum, but can be changed depending on pertinance, the enum already set is a model of what can it be
 
-- `id`: Uniquely identifies the observation.
-- `event_type`: Title we use to categorise our events.
-- `visit_id`: Observations are traditionally observed during a visit between the caregiver (carer) and care recipient. This ID identifies that visit.
-- `caregiver_id`: Identifies who the caregiver (carer) was that made this observation.
-- `care_recipient_id`: Identifies the care recipient this observation is for.
+## Frontend [Unachieved]
+:warning: To add: `Global state management`, `Testing`, `Improvement of the UI`
 
-On top of that, there can be **additional properties** based on the `event_type`:
+1. Authentication pages
+- ![screenshot](screenshots/loginswusj.png)
+- ![screenshot](screenshots/signup.png)
+- ![screenshot](screenshots/caregiver.png)
+- ![screenshot](screenshots/famillmember.png)
 
-- `mood` describes the mood of the care recipient as reported by the caregiver
+> UI contains static data, need API consumption to be functional
 
-The database (we should have sent you credentials) contains some of these observation events, within the `events` table.
-
-## Challenge
-
-*Display the information to a family member*
-
-#### Your challenge is to clone this repository and create a small web application to visualize these observations, so that looking at it is valuable to a family member of this care recipient.
-
-This could mean presenting it in the following forms:
-
- - A table
- - A graph
- - A timeline
-
- Or any other way/combination of those. We are test driven here at Birdie so please make sure you write tests to validate your work.
-
-## Deliverables
-
-- Put your code on Github and send us the link to the repository
-- Deploying the code to a platform like [Heroku](https://heroku.com) is a great plus.
-- **If you are unable to deploy your code please send a recording of the application working**
-
-## Set up
-
-Here's the technical stack this boilerplate was made with:
-
-### Front end
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/introduction/getting-started)
-* [TypeScript](https://www.typescriptlang.org/)
-* [Redux sagas](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html)
-* [Styled components](https://www.styled-components.com/)
-
-### Back end
-* [Express](https://expressjs.com/)
-* [MySQL](https://www.mysql.com/)
-* [TypeScript](https://www.typescriptlang.org/)
-
+## Backend 
+:warning: Need to complete the Unit testing for `care_recipient` and `visits`
+End points: 
+- **[POST]** `/api/users/register` : To create a new user
+- **[POST]** `/api/users/login` : To authenticate a user
+- **[POST]** *[PROTECTED]* `/api/visits/create/:care_giver_id/:care_recipient_id` : To register a new observation by `care_giver` only
+- **[POST]** *[PROTECTED]* `/api/care-recipients/register/:first_familly_member` : To register a new care recipient
+- **[GET]** *[PROTECTED]* `/api/visits/` : To get complete list of visits to display in the `care_recipient` UI
+- **[GET]** *[PROTECTED]* `/api/visits/:familly_member_id`: To get list of visits for a `care_recipient` which belongs to a certain familly member
 ## Usage
 
 1. Start the API. (Run the following commands within the `backend` folder)
