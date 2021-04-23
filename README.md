@@ -5,6 +5,8 @@
 
 ## Understantanding of the challenge
 
+[Loom Presentation of the project](https://www.loom.com/share/a6b0d41e547c46f8bf1054dff04e6a6c)
+
 Needing to display information in the format bellow
 ``` json
 {  
